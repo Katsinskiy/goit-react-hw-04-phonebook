@@ -1,0 +1,9 @@
+.section {
+  text-align: center;
+  background-color: rgb(238, 201, 34);
+  width: 450px;
+  padding-left: 47px;
+  padding-right: 47px;
+  padding-bottom: 40px;
+  /* border-radius: 10px 10px 0 0; */
+}
