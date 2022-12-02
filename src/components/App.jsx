@@ -1,5 +1,7 @@
-import 'modern-normalize/modern-normalize.css';
+
 import { useState, useEffect, useRef } from 'react';
+
+import 'modern-normalize/modern-normalize.css';
 import SectionTitle from './Section/SectionTitle';
 import ContactsForm from './ContactsForm/ContactsForm';
 import ContactList from './ContactList/ContactList';
@@ -11,7 +13,7 @@ import { useSearchParams } from 'react-router-dom';
 
 const App = () => {
   const [contacts, setContacts] = useState([]);
-  // const [filter, setFilter] = useState('');
+ 
   const [searchParams, setSearchParams] = useSearchParams();
   const firstRender = useRef(true);
   const filter = searchParams.get('value') ?? '';
@@ -32,7 +34,7 @@ const App = () => {
   }, [contacts]);
 
   const onChangeFilterValue = event => {
-    // setFilter(event.target.value);
+    
 
     const nextParams =
       event.target.value !== '' ? { value: event.target.value } : {};
