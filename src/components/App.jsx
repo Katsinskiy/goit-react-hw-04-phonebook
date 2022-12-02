@@ -1,15 +1,17 @@
-
 import { useState, useEffect, useRef } from 'react';
-
-import 'modern-normalize/modern-normalize.css';
-import SectionTitle from './Section/SectionTitle';
-import ContactsForm from './ContactsForm/ContactsForm';
-import ContactList from './ContactList/ContactList';
-import Filter from './Filter/Filter';
-import s from './app.module.css';
 
 import { nanoid } from 'nanoid';
 import { useSearchParams } from 'react-router-dom';
+
+import SectionTitle from './Section/SectionTitle';
+import ContactsForm from './ContactsForm/ContactsForm';
+import ContactList from './ContactList/ContactList';
+
+import Filter from './Filter/Filter';
+
+import s from './app.module.css';
+import 'modern-normalize/modern-normalize.css';
+
 
 const App = () => {
   const [contacts, setContacts] = useState([]);
@@ -18,20 +20,7 @@ const App = () => {
   const firstRender = useRef(true);
   const filter = searchParams.get('value') ?? '';
 
-  useEffect(() => {
-    const contacts = JSON.parse(localStorage.getItem('contacts')) ?? [];
-    if (contacts?.length) {
-      setContacts([...contacts]);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!firstRender.current) {
-      localStorage.setItem('contacts', JSON.stringify(contacts));
-      return;
-    }
-    firstRender.current = false;
-  }, [contacts]);
+  
 
   const onChangeFilterValue = event => {
     
@@ -43,7 +32,6 @@ const App = () => {
 
   const compareContacts = () => {
     const normalizeFilter = filter.toLowerCase().trim();
-    console.log('filter: ', filter);
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizeFilter)
     );
@@ -68,10 +56,24 @@ const App = () => {
     setContacts(prevState => prevState.filter(contact => contact.id !== id));
   };
 
+  useEffect(() => {
+    const contacts = JSON.parse(localStorage.getItem('contacts')) ?? [];
+    if (contacts?.length) {
+      setContacts([...contacts]);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!firstRender.current) {
+      localStorage.setItem('contacts', JSON.stringify(contacts));
+      return;
+    }
+    firstRender.current = false;
+  }, [contacts]);
+
   return (
     <div className={s.wrap}>
       <SectionTitle title="Phonebook">
-        {/* в инфо приходит наш стейт с формы после сабмита и записываеться в параметр дата */}
         <ContactsForm catchSubmitInfo={addContact} />
       </SectionTitle>
       <SectionTitle title="Contacts">

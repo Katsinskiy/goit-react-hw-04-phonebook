@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
 
-  /* padding: 25px; */
+ 
 }
 .label {
   margin-top: 15px;
@@ -16,6 +16,5 @@
 
 .button {
   margin: 0 auto;
-  /* max-width: 189px; */
   margin-top: 15px;
 }

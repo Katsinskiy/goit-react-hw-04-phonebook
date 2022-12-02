@@ -3,10 +3,7 @@ import s from './ContactsForm.module.css';
 import PropTypes from 'prop-types';
 
 const ContactsForm = ({ catchSubmitInfo }) => {
-  // state = {
-  //   name: '',
-  //   number: '',
-  // };
+ 
   const [contact, setContact] = useState({ name: '', number: '' });
 
   const onHandleChange = event => {

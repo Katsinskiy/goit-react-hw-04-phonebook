@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import s from './SectionTitle.module.css';
+
 const SectionTitle = ({ title, children }) => {
   return (
     <section className={s.section}>
